@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "studysmart.server", "studysmart.server\studysmart.server.csproj", "{B8EB7F90-2247-4278-B1F5-700A095679A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8EB7F90-2247-4278-B1F5-700A095679A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8EB7F90-2247-4278-B1F5-700A095679A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8EB7F90-2247-4278-B1F5-700A095679A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8EB7F90-2247-4278-B1F5-700A095679A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
