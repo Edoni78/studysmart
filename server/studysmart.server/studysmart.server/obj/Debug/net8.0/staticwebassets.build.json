@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "taQZ0iTeqACrkBuiR46wqpJ5jzfPa64BVuDU3J5HfTA=",
+  "Source": "studysmart.server",
+  "BasePath": "_content/studysmart.server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

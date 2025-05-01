@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\studysmart.server.props" />
+</Project>
