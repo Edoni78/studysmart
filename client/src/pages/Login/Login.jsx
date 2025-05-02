@@ -1,9 +1,36 @@
-import React from 'react'
+import React , { useState } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate  } from 'react-router-dom'
+import axios from 'axios'
 
 const Login = () => {
+    const navigate = useNavigate()
+  
+    const [formData, setFormData] = useState({
+      username: '',
+      password: ''
+    })
+    const handleChange = (e) => {
+      setFormData(prev => ({
+        ...prev,
+        [e.target.id]: e.target.value
+      }))
+    }
+
+    
+    const handleSubmit = async (e) => {
+      e.preventDefault()
+      try {
+        const response = await axios.post('http://localhost:5101/api/Auth/login', formData)
+        console.log('Login successful:', response.data)
+        const token = response.data.token
+        localStorage.setItem('token', token)
+        navigate('/') // redirect after successful registration
+      } catch (error) {
+        console.error('Registration failed:', error.response?.data || error.message)
+      }
+    }
   return (
     <>
       <Navbar />
@@ -22,14 +49,30 @@ const Login = () => {
             {/* Right Side Form */}
             <div className="col-md-6 bg-white p-5">
               <h3 className="text-center mb-4" style={{ color: '#7e5bef' }}>Login</h3>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label htmlFor="email" className="form-label">Email Address</label>
-                  <input type="email" className="form-control" id="email" placeholder="you@example.com" />
+                  <label htmlFor="username" className="form-label">Username</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="username"
+                    placeholder="JohnDoe"
+                    value={formData.username}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <div className="mb-4">
                   <label htmlFor="password" className="form-label">Password</label>
-                  <input type="password" className="form-control" id="password" placeholder="••••••••" />
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="password"
+                    placeholder="••••••••"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <button type="submit" className="btn w-100" style={{ backgroundColor: '#7e5bef', color: 'white' }}>
                   Login

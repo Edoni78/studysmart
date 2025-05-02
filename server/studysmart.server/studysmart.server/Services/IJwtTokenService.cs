@@ -1,6 +1,7 @@
 namespace studysmart.server.Services;
+using Microsoft.AspNetCore.Identity;
 
-public class IJwtTokenService
+public interface  IJwtTokenService
 {
-    
+    string CreateToken(IdentityUser user);
 }

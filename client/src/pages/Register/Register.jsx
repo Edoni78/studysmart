@@ -1,9 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Register = () => {
+
+  const navigate = useNavigate()
+
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: ''
+  })
+
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.id]: e.target.value
+    }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await axios.post('http://localhost:5101/api/Auth/register', formData)
+      console.log('Registration successful:', response.data)
+      navigate('/login') // redirect after successful registration
+    } catch (error) {
+      console.error('Registration failed:', error.response?.data || error.message)
+    }
+  }
   return (
     <>
       <Navbar />
@@ -22,22 +49,42 @@ const Register = () => {
             {/* Right Side Form */}
             <div className="col-md-6 bg-white p-5">
               <h3 className="text-center mb-4" style={{ color: '#7e5bef' }}>Create Account</h3>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label htmlFor="name" className="form-label">Full Name</label>
-                  <input type="text" className="form-control" id="name" placeholder="John Doe" />
+                  <label htmlFor="username" className="form-label">Username</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="username"
+                    placeholder="JohnDoe"
+                    value={formData.username}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">Email Address</label>
-                  <input type="email" className="form-control" id="email" placeholder="you@example.com" />
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    placeholder="you@example.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="password" className="form-label">Password</label>
-                  <input type="password" className="form-control" id="password" placeholder="••••••••" />
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
-                  <input type="password" className="form-control" id="confirmPassword" placeholder="••••••••" />
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="password"
+                    placeholder="••••••••"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <button type="submit" className="btn w-100" style={{ backgroundColor: '#7e5bef', color: 'white' }}>
                   Register
