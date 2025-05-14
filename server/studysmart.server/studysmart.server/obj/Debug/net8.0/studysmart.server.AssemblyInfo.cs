@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("studysmart.server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96305c3d11316d4cbd05ca70aeed0652628abbe9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b10604752d845e4c049abc37dd9de9a6d7a9c66b")]
 [assembly: System.Reflection.AssemblyProductAttribute("studysmart.server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("studysmart.server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
